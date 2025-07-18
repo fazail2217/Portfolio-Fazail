@@ -1,10 +1,28 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
+// Dark mode helper
+const toggleDarkMode = (enabled) => {
+  if (enabled) {
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  }
+};
+
 // Main App component
 const App = () => {
     // State for mobile menu visibility
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    // State for dark mode
+    const [darkMode, setDarkMode] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('theme') === 'dark';
+        }
+        return false;
+    });
     // State for projects data
     const [projects, setProjects] = useState([
         {
@@ -72,6 +90,11 @@ const App = () => {
     const filteredProjects = filter === 'All' ? projects : projects.filter(p => p.technologies.includes(filter));
 
     // Effect for Section Animations (fade-in from bottom)
+    // Effect for dark mode on mount
+    useEffect(() => {
+        toggleDarkMode(darkMode);
+    }, [darkMode]);
+
     useEffect(() => {
         const sections = document.querySelectorAll('section');
         const observerOptions = {
@@ -252,29 +275,44 @@ const App = () => {
     }, []); // Empty dependency array ensures this runs once on mount
 
     return (
-        <div className="antialiased">
+        <div className={"antialiased " + (darkMode ? 'dark bg-gray-900 text-white' : '')}>
             {/* Header & Navigation */}
             <header id="header" className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
                 <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-                    <a href="#" className="text-2xl font-bold text-gray-900">Fazail Ahmad</a>
+                    <a href="#" className="text-2xl font-bold text-gray-900 dark:text-white">Fazail Ahmad</a>
                     <div className="hidden md:flex items-center space-x-8">
                         <a href="#about" className="nav-link text-gray-700 hover:text-emerald-700 border-b-2 border-transparent hover:border-emerald-700">About</a>
                         <a href="#experience" className="nav-link text-gray-700 hover:text-emerald-700 border-b-2 border-transparent hover:border-emerald-700">Experience</a>
                         <a href="#education" className="nav-link text-gray-700 hover:text-emerald-700 border-b-2 border-transparent hover:border-emerald-700">Education</a>
                         <a href="#projects" className="nav-link text-gray-700 hover:text-emerald-700 border-b-2 border-transparent hover:border-emerald-700">Projects</a>
                         <a href="#skills" className="nav-link text-gray-700 hover:text-emerald-700 border-b-2 border-transparent hover:border-emerald-700">Skills</a>
+                        <a href="#certifications" className="nav-link text-gray-700 hover:text-emerald-700 border-b-2 border-transparent hover:border-emerald-700">Certifications & Courses</a>
                     </div>
+                    <a href="/Fazail_Ahmad_Resume.pdf" download className="hidden md:block bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors mr-2">Download Resume</a>
                     <a href="mailto:fazailahmad237@gmail.com" className="hidden md:block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">Contact Me</a>
+                    <button
+                        onClick={() => setDarkMode(dm => !dm)}
+                        className="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                        aria-label="Toggle dark mode"
+                    >
+                        {darkMode ? (
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"></path></svg>
+                        ) : (
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.07l-.71.71M21 12h-1M4 12H3m16.66 6.66l-.71-.71M4.05 4.93l-.71-.71"/></svg>
+                        )}
+                    </button>
                     <button id="mobile-menu-button" className="md:hidden text-gray-800 focus:outline-none" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
                 </nav>
                 {/* Mobile Menu */}
                 <div id="mobile-menu" className={`${isMobileMenuOpen ? 'block' : 'hidden'} md:hidden px-6 pt-2 pb-4`}>
+                    <a href="/Fazail_Ahmad_Resume.pdf" download className="block py-2 text-emerald-700 hover:text-emerald-900 font-semibold" onClick={() => setIsMobileMenuOpen(false)}>Download Resume</a>
                     <a href="#about" className="block py-2 text-gray-700 hover:text-emerald-700" onClick={() => setIsMobileMenuOpen(false)}>About</a>
                     <a href="#experience" className="block py-2 text-gray-700 hover:text-emerald-700" onClick={() => setIsMobileMenuOpen(false)}>Experience</a>
                     <a href="#projects" className="block py-2 text-gray-700 hover:text-emerald-700" onClick={() => setIsMobileMenuOpen(false)}>Projects</a>
                     <a href="#skills" className="block py-2 text-gray-700 hover:text-emerald-700" onClick={() => setIsMobileMenuOpen(false)}>Skills</a>
+                    <a href="#certifications" className="block py-2 text-gray-700 hover:text-emerald-700" onClick={() => setIsMobileMenuOpen(false)}>Certifications & Courses</a>
                     <a href="mailto:fazailahmad237@gmail.com" className="block mt-2 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors text-center">Contact Me</a>
                 </div>
             </header>
@@ -294,7 +332,11 @@ const App = () => {
                         <a href="https://www.linkedin.com/in/fazail-ahmad" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-emerald-700">
                             <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.762-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
-                        {/* No portfolio link provided in Fazail's CV, so removed */}
+                        <a href="https://github.com/fazail2217" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-emerald-700">
+                            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.606-2.665-.304-5.466-1.332-5.466-5.931 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.984-.399 3.003-.404 1.018.005 2.046.138 3.006.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.119 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.625-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 21.796 24 17.297 24 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                        </a>
                     </div>
                 </section>
 
