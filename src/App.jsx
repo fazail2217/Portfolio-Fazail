@@ -24,7 +24,7 @@ const App = () => {
         {/* Header & Navigation */}
         <header id="header" className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
           <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-            <Link to="/" className="text-2xl font-bold text-gray-900 dark:text-white">Fazail Ahmad</Link>
+            <Link to="/" className="text-2xl font-bold text-gray-900 dark:text-black">Fazail Ahmad</Link>
             <div className="hidden md:flex items-center space-x-8">
               <Link to="/" className="nav-link text-gray-700 hover:text-emerald-700 border-b-2 border-transparent hover:border-emerald-700">Home</Link>
               <Link to="/about" className="nav-link text-gray-700 hover:text-emerald-700 border-b-2 border-transparent hover:border-emerald-700">About</Link>

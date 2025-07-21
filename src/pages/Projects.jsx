@@ -60,7 +60,7 @@ const Projects = () => {
   return (
     <section id="projects" className="mb-24">
       <h3 className="text-4xl font-bold text-gray-900 mb-4 text-center">Project Showcase</h3>
-      <p className="text-center text-gray-700 max-w-2xl mx-auto mb-12">Here's a selection of my work. Click the buttons to filter by technology and see how I apply my skills to solve real-world problems and build engaging applications.</p>
+      <p className="text-center text-white-700 max-w-2xl mx-auto mb-12">Here's a selection of my work. Click the buttons to filter by technology and see how I apply my skills to solve real-world problems and build engaging applications.</p>
       <div id="project-filters" className="flex flex-wrap justify-center gap-2 mb-8">
         {allTechs.map(tech => (
           <button

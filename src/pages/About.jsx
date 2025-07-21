@@ -2,9 +2,9 @@ import React from 'react';
 
 const About = () => (
   <section id="about" className="mb-24">
-    <h1 className="text-5xl md:text-6xl font-bold text-gray-900">Software Engineer</h1>
+    <h1 className="text-5xl md:text-6xl font-bold text-white-900">Software Engineer</h1>
     <h2 className="text-3xl md:text-4xl font-semibold text-emerald-700 mt-2">Frontend Developer | Full Stack Aspirant</h2>
-    <div className="mt-8 text-lg text-gray-700 max-w-4xl space-y-4">
+    <div className="mt-8 text-lg text-white-700 max-w-4xl space-y-4">
       <p>Passionate Software Engineer specializing in Frontend Development with expertise in React.js, JavaScript, HTML, CSS, Bootstrap, and Tailwind CSS, focused on building responsive and user-friendly web applications.</p>
       <p>Proven ability to develop website interfaces with modern frameworks, design engaging user interfaces, and create responsive web applications.</p>
     </div>
