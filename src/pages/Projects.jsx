@@ -9,6 +9,13 @@ const projectsData = [
     type: 'Work'
   },
   {
+    title: 'Skill Sharing web App',
+    year: 2025,
+    description: 'Skill sharing web app for the exchange of skills, specifically excluding static skill exchange. It includes one-on-one video sessions and chat between tutor and learner for personalized learning.',
+    technologies: ['HTML', 'CSS', 'React', 'Firebase', 'JavaScript'],
+    type: 'Personal'
+  },
+  {
     title: 'CV Builder - Web Base',
     year: 2025,
     description: 'Developed a web-based CV builder to create resumes, with PDF export and local storage for templates.',
