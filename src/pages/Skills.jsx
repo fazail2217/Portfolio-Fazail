@@ -16,7 +16,7 @@ const Skills = () => {
         data: {
           labels: [
             'HTML5', 'CSS', 'JavaScript', 'Tailwind', 'React JS', 'Bootstrap',
-            'OOP', 'DSA', 'Firebase (Auth, Database)', 'MySQL & DBMS', 'C#', 'C++'
+            'OOP', 'DSA', 'Firebase (Auth, Database)', 'MySQL & DBMS', 'C#', 'C++' ,'PHP' ,'Laravel' ,'MYSQL'
           ],
           datasets: [{
             label: 'Frontend',
@@ -26,7 +26,7 @@ const Skills = () => {
             borderWidth: 1
           }, {
             label: 'Backend & Concepts',
-            data: [0, 0, 0, 0, 0, 0, 80, 75, 70, 75, 65, 60],
+            data: [0, 0, 0, 0, 0, 0, 80, 75, 70, 75, 65, 60 , 70 , 92 , 97],
             backgroundColor: 'rgba(251, 191, 36, 0.7)',
             borderColor: 'rgba(251, 191, 36, 1)',
             borderWidth: 1
@@ -71,7 +71,7 @@ const Skills = () => {
 
   return (
     <section id="skills" className="mb-24">
-      <h3 className="text-4xl font-bold text-gray-900 mb-4 text-center">Tech Tool Box</h3>
+      <h3 className="text-4xl font-bold text-white-900 mb-4 text-center">Tech Tool Box</h3>
       <p className="text-center text-white-700 max-w-2xl mx-auto mb-12">My technical abilities span across frontend and backend development (Full Stack Dev). This chart provides a high-level overview of my core competencies, showcasing my versatility as a Full Stack Developer.</p>
       <div className="bg-white p-4 sm:p-8 rounded-lg shadow-md">
         <div className="chart-container relative w-full h-96 max-w-4xl mx-auto">
