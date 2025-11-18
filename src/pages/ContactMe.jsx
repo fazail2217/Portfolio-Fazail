@@ -83,7 +83,7 @@ const ContactMe = ({ isDark = false }) => (
                 : "text-gray-900 hover:text-blue-800"
             }`}
           >
-            +92 3216886133
+            +92 333 4526751
           </a>
         </p>
         <p
