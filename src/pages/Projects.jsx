@@ -1,108 +1,108 @@
 import React, { useState } from 'react';
 
 const projectsData = [
-  {
-    title: 'Forklift Shop Management System',
-    year: 2025,
-    description: 'Developed a desktop application for managing a forklift shop, handling inventory and sales.',
-    technologies: ['C#', 'SQL Studio'],
-    type: 'Work'
-  },
-  {
-    title: 'Skill Sharing web App',
-    year: 2025,
-    description: 'Skill sharing web app for the exchange of skills, specifically excluding static skill exchange. It includes one-on-one video sessions and chat between tutor and learner for personalized learning.',
-    technologies: ['HTML', 'CSS', 'React', 'Firebase', 'JavaScript'],
-    type: 'Personal'
-  },
-  {
-    title: 'CV Builder - Web Base',
-    year: 2025,
-    description: 'Developed a web-based CV builder to create resumes, with PDF export and local storage for templates.',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'Local Storage'],
-    type: 'University'
-  },
-  {
-    title: 'TO-DO-List Web App',
-    year: 2024,
-    description: 'Developed a JavaScript-focused to-do list web application with features including image view and category organization.',
-    technologies: ['HTML', 'CSS', 'JavaScript'],
-    type: 'Work'
-  },
-  {
-    title: 'Pharmacy Management System Using C#',
-    year: 2024,
-    description: 'Developed a desktop application for pharmacy management using C# Windows Forms, with SQL Server backend.',
-    technologies: ['C#', 'SQL Studio'],
-    type: 'University'
-  },
-  {
-    title: 'OBAN Foods',
-    year: 2023,
-    description: 'Developed landing pages for OBAN Foods as a web clone project, focusing on HTML and CSS.',
-    technologies: ['HTML', 'CSS'],
-    type: 'Work'
-  },
-  {
-    title: 'Pharmacy Management System (Design)',
-    year: 2023,
-    description: 'Designed the architecture of an online pharmacy management system, including UML diagrams.',
-    technologies: ['Draw.io', 'Visual Paradigm'],
-    type: 'University'
-  },
-  {
-    title: 'Cafe Management System Using C++',
-    year: 2022,
-    description: 'Developed a cafe product management, order taker, and inventory system using C++.',
-    technologies: ['C++'],
-    type: 'University'
-  }
+  // Live Projects
+  { title: 'Enterprise Resource Planning System (ERP)', year: 2025, description: 'Developed a Web Base application for managing a  Enterprise Resource Planing, handling inventory sales each and everything.', technologies: ['Laravel', 'MySql', 'Bootstrap', 'CSS', 'JavaScript'], type: 'Industrial Project', live: true, link: 'https://demo.algosofttech.com/' },
+  { title: 'Admin Portal (Max Auto Care)', year: 2025, description: 'Fully functional admin portal for Max Auto Care e-commerce.', technologies: ['Laravel', 'MySql', 'Bootstrap', 'CSS', 'JavaScript'], type: 'Industrial Project', live: true, link: 'https://adminportal.maxautocare.com.pk/' },
+  { title: 'Eleeva Adhesives', year: 2025, description: 'Complete corporate website for adhesives company.', technologies: ['React.Js', 'HTML5', 'Bootstrap', 'CSS3', 'JavaScript'], type: 'Industrial Project', live: true, link: 'https://eleevaadhesives.com/' },
+  { title: 'Skill Sharing web App', year: 2025, description: 'Real-time skill exchange platform with video sessions & chat.', technologies: ['HTML', 'CSS', 'React', 'Firebase', 'JavaScript'], type: 'Personal', live: true, link: 'https://skill-sharing-app.vercel.app/' },
+
+  // All other projects (non-live)
+  { title: 'Forklift Shop Management System', year: 2025, description: 'Desktop application for forklift shop management.', technologies: ['C#', 'SQL Studio'], type: 'Work', live: false },
+  { title: 'CV Builder - Web Base', year: 2025, description: 'Web-based resume builder with PDF export.', technologies: ['HTML', 'CSS', 'JavaScript', 'Local Storage'], type: 'University', live: false },
+  { title: 'TO-DO-List Web App', year: 2024, description: 'Feature-rich to-do list with categories & image preview.', technologies: ['HTML', 'CSS', 'JavaScript'], type: 'Work', live: false },
+  { title: 'Pharmacy Management System Using C#', year: 2024, description: 'Windows Forms app with SQL Server.', technologies: ['C#', 'SQL Studio'], type: 'University', live: false },
+  { title: 'OBAN Foods', year: 2023, description: 'Landing page clone (HTML & CSS focus).', technologies: ['HTML', 'CSS'], type: 'Work', live: false },
+  { title: 'Pharmacy Management System (Design)', year: 2023, description: 'Full system design & UML diagrams.', technologies: ['Draw.io', 'Visual Paradigm'], type: 'University', live: false },
+  { title: 'Cafe Management System Using C++', year: 2022, description: 'Console-based cafe order & inventory system.', technologies: ['C++'], type: 'University', live: false }
 ];
 
 const Projects = () => {
   const [filter, setFilter] = useState('All');
   const allTechs = ['All', ...new Set(projectsData.flatMap(p => p.technologies))];
-  const filteredProjects = filter === 'All' ? projectsData : projectsData.filter(p => p.technologies.includes(filter));
+  const liveProjects = projectsData.filter(p => p.live);
+  const allFiltered = filter === 'All' ? projectsData : projectsData.filter(p => p.technologies.includes(filter));
 
   return (
-    <section id="projects" className="mb-24">
-      <h3 className="text-4xl font-bold text-white-900 mb-4 text-center">Project Showcase</h3>
-      <p className="text-center text-white-700 max-w-2xl mx-auto mb-12">Here's a selection of my work. Click the buttons to filter by technology and see how I apply my skills to solve real-world problems and build engaging applications.</p>
-      <div id="project-filters" className="flex flex-wrap justify-center gap-2 mb-8">
-        {allTechs.map(tech => (
-          <button
-            key={tech}
-            className={`filter-btn px-4 py-2 text-sm font-medium rounded-full shadow-sm transition-colors ${filter === tech ? 'bg-emerald-600 text-white' : 'bg-white text-gray-700 hover:bg-emerald-50'}`}
-            onClick={() => setFilter(tech)}
-          >
-            {tech}
-          </button>
-        ))}
-      </div>
-      <div id="project-gallery" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProjects.map((project, index) => (
-          <div key={index} className="project-card bg-white rounded-lg shadow-md overflow-hidden p-6 flex flex-col border border-emerald-100">
-            <div className="flex-grow">
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="font-bold text-xl text-gray-900">{project.title}</h4>
-                <span className="text-sm font-medium text-gray-500">{project.year}</span>
+    <>
+      {/* Live Projects Section */}
+      {liveProjects.length > 0 && (
+        <section className="mb-24">
+          <h3 className="text-4xl font-bold text-white-900 mb-4 text-center">Live Projects</h3>
+          <p className="text-center text-white-700 max-w-2xl mx-auto mb-12">Projects currently deployed and accessible online.</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {liveProjects.map((project, i) => (
+              <div key={i} className="project-card bg-white rounded-lg shadow-md overflow-hidden p-6 flex flex-col border border-emerald-100">
+                <div className="flex-grow">
+                  <div className="flex justify-between items-start mb-2">
+                    <h4 className="font-bold text-xl text-gray-900">{project.title}</h4>
+                    <span className="text-sm font-medium text-gray-500">{project.year}</span>
+                  </div>
+                  <p className="text-gray-700 mb-4">{project.description}</p>
+                </div>
+                <div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.map((t, j) => (
+                      <span key={j} className="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-full">{t}</span>
+                    ))}
+                  </div>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-800 font-semibold text-sm inline-flex items-center gap-1">
+                    View Live <span>↗</span>
+                  </a>
+                </div>
               </div>
-              <p className="text-gray-700 mb-4">{project.description}</p>
-            </div>
-            <div>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech, techIndex) => (
-                  <span key={techIndex} className="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-full">{tech}</span>
-                ))}
-              </div>
-              {project.link && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-800 font-semibold text-sm">View Live ↗</a>
-              )}
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </section>
+        </section>
+      )}
+
+      {/* All Projects Section */}
+      <section id="projects">
+        <h3 className="text-4xl font-bold text-white-900 mb-4 text-center">Project Showcase</h3>
+        <p className="text-center text-white-700 max-w-2xl mx-auto mb-12">
+          Full collection of my work. Filter by technology below.
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {allTechs.map(tech => (
+            <button
+              key={tech}
+              onClick={() => setFilter(tech)}
+              className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                filter === tech ? 'bg-emerald-600 text-white' : 'bg-white text-gray-700 hover:bg-emerald-50'
+              }`}
+            >
+              {tech}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {allFiltered.map((project, i) => (
+            <div key={i} className="project-card bg-white rounded-lg shadow-md overflow-hidden p-6 flex flex-col border border-emerald-100">
+              <div className="flex-grow">
+                <div className="flex justify-between items-start mb-2">
+                  <h4 className="font-bold text-xl text-gray-900">{project.title}</h4>
+                  <span className="text-sm font-medium text-gray-500">{project.year}</span>
+                </div>
+                <p className="text-gray-700 mb-4">{project.description}</p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((t, j) => (
+                  <span key={j} className="bg-emerald-100 text-emerald-800 text-xs font-semibold px-2.5 py-1 rounded-full">{t}</span>
+                ))}
+                {project.live && (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:text-emerald-800 font-semibold text-sm inline-flex items-center gap-1 mt-3">
+                    View Live <span>↗</span>
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 };
 
