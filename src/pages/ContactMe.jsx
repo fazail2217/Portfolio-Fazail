@@ -76,14 +76,14 @@ const ContactMe = ({ isDark = false }) => (
             />
           </svg>
           <a
-            href="tel:+923216886133"
+            href="tel:+923334526751"
             className={`${
               isDark
                 ? "text-gray-200 hover:text-emerald-400"
                 : "text-gray-900 hover:text-blue-800"
             }`}
           >
-            +92 333 4526751
+            +92 3334526751
           </a>
         </p>
         <p
