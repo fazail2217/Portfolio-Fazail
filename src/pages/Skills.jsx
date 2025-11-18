@@ -71,8 +71,8 @@ const Skills = () => {
 
   return (
     <section id="skills" className="mb-24">
-      <h3 className="text-4xl font-bold text-gray-900 mb-4 text-center">Technical Skills</h3>
-      <p className="text-center text-white-700 max-w-2xl mx-auto mb-12">My technical abilities span across frontend and backend development. This chart provides a high-level overview of my core competencies, showcasing my versatility as a developer.</p>
+      <h3 className="text-4xl font-bold text-gray-900 mb-4 text-center">Tech Tool Box</h3>
+      <p className="text-center text-white-700 max-w-2xl mx-auto mb-12">My technical abilities span across frontend and backend development (Full Stack Dev). This chart provides a high-level overview of my core competencies, showcasing my versatility as a Full Stack Developer.</p>
       <div className="bg-white p-4 sm:p-8 rounded-lg shadow-md">
         <div className="chart-container relative w-full h-96 max-w-4xl mx-auto">
           <canvas ref={chartRef} id="skillsChart"></canvas>

@@ -7,6 +7,8 @@ import Education from './pages/Education';
 import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import Certifications from './pages/Certifications';
+import ContactMe from './pages/ContactMe';
+import FloatingButton from './pages/FloatingButton';
 
 
 
@@ -35,7 +37,7 @@ const App = () => {
               <Link to="/certifications" className="nav-link text-gray-700 hover:text-emerald-700 border-b-2 border-transparent hover:border-emerald-700">Certifications & Courses</Link>
             </div>
             {/* Download Resume button removed as requested */}
-            <a href="mailto:fazailahmad237@gmail.com" className="hidden md:block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">Contact Me</a>
+            <Link to="/ContactMe" className="hidden md:block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">Contact Me</Link>
             {/* Dark mode toggle removed, always dark theme */}
             <button id="mobile-menu-button" className="md:hidden text-gray-800 focus:outline-none" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -51,7 +53,7 @@ const App = () => {
             <Link to="/skills" className="block py-2 text-gray-700 hover:text-emerald-700" onClick={() => setIsMobileMenuOpen(false)}>Skills</Link>
             <Link to="/education" className="block py-2 text-gray-700 hover:text-emerald-700" onClick={() => setIsMobileMenuOpen(false)}>Education</Link>
             <Link to="/certifications" className="block py-2 text-gray-700 hover:text-emerald-700" onClick={() => setIsMobileMenuOpen(false)}>Certifications & Courses</Link>
-            <a href="mailto:fazailahmad237@gmail.com" className="block mt-2 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors text-center">Contact Me</a>
+            <Link to="/ContactMe" className="block mt-2 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors text-center" onClick={() => setIsMobileMenuOpen(false)}>Contact Me</Link>
           </div>
         </header>
 
@@ -64,9 +66,10 @@ const App = () => {
             <Route path="/projects" element={<Projects />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/certifications" element={<Certifications />} />
+            <Route path="/ContactMe" element={<ContactMe />} />
           </Routes>
         </main>
-
+         <FloatingButton/>
         <footer className="bg-gray-900 text-white py-8">
           <div className="container mx-auto px-6 text-center">
             <p>&copy; 2024 Fazail Ahmad. All rights reserved.</p>
